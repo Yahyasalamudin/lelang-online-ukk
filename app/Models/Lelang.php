@@ -29,6 +29,6 @@ class Lelang extends Model
 
     public function user()
     {
-        return $this->belongsto('App\Models\User', 'id_pengguna', 'id');
+        return $this->belongsto('App\Models\User', 'id_pengguna', 'id', User::class);
     }
 }

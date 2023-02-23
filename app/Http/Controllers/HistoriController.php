@@ -17,20 +17,23 @@ class HistoriController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $cek = DB::table('lelang')
             ->where('id_lelang', $request->id_lelang)
             ->join('barang', 'lelang.id_barang', '=', 'barang.id_barang')->first();
-
+        // $c = DB::table('lelang')
+        //     ->where('id_barang', $id);
+        // $cek1 = $request->id_barang;
+        // dd($c);
         if ($request->penawaran_harga <= $cek->harga_awal) {
             return redirect()->back()->with('warning', 'Penawaran harga tidak boleh KURANG atau SAMA DENGAN harga awal!!!');
         } else {
             $save = new History;
 
             $save->id_lelang = $request->id_lelang;
-            // $save->id_pengguna = $request->id_pengguna;
             $save->id_pengguna = Auth::user()->id;
+            $save->id_barang = $id;
             $save->penawaran_harga = $request->penawaran_harga;
 
             $save->save();

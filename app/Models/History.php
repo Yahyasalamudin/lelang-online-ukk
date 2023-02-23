@@ -9,8 +9,6 @@ class History extends Model
 {
     use HasFactory;
 
-    public $timestamps=false;
-
     protected $table="history";
     protected $primaryKey="id_history";
     protected $fillable=[
@@ -18,6 +16,7 @@ class History extends Model
         'id_pengguna',
         'penawaran_harga',
         'status_pemenang',
+        'id_barang',
     ];
 
     public function history()

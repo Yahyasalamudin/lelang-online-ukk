@@ -129,55 +129,55 @@
                                 </thead>
                                 <?php $no = 1; ?>
                                 @foreach ($lelang1 as $l)
-                                    @if ($l->status == 'dibuka')
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex px-3 py-5">
-                                                        <div class="align-middle text-center text-sm">
-                                                            <h6 class="mb-0 text-sm"> {{ $no++ }}</h6>
-                                                        </div>
+                                    {{-- @if ($l->status == 'dibuka') --}}
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-3 py-5">
+                                                    <div class="align-middle text-center text-sm">
+                                                        <h6 class="mb-0 text-sm"> {{ $no++ }}</h6>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <div class="avatar-group mt-2">
-                                                        <img src="{{ url('storage/image/barang/' . $l->barang->gambar) }}"
-                                                            alt="" style="height:100px; width:100px">
-                                                    </div>
-                                                </td>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="avatar-group mt-2">
+                                                    <img src="{{ url('storage/image/barang/' . $l->barang->gambar) }}"
+                                                        alt="" style="height:100px; width:100px">
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold"> {{ $l->barang->nama_barang }}
+                                                </span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">Dibuka</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold">
+                                                    {{ date('d/m/Y', strtotime($l->tgl_lelang)) }} </span>
+                                            </td>
+                                            @if ($l->harga_akhir == null)
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="text-xs font-weight-bold"> {{ $l->barang->nama_barang }}
-                                                    </span>
+                                                    <span class="text-xs font-weight-bold">-</span>
                                                 </td>
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-success">Dibuka</span>
-                                                </td>
+                                            @else
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="text-xs font-weight-bold">
-                                                        {{ date('d/m/Y', strtotime($l->tgl_lelang)) }} </span>
+                                                        Rp.{{ number_format($l->harga_akhir) }} </span>
                                                 </td>
-                                                @if ($l->harga_akhir == null)
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-xs font-weight-bold">-</span>
-                                                    </td>
-                                                @else
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-xs font-weight-bold">
-                                                            Rp.{{ number_format($l->harga_akhir) }} </span>
-                                                    </td>
-                                                @endif
-                                                @if ($l->id_pengguna == null)
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-xs font-weight-bold">-</span>
-                                                    </td>
-                                                @else
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-xs font-weight-bold"> {{ $l->user->nama }} </span>
-                                                    </td>
-                                                @endif
-                                            </tr>
-                                        </tbody>
-                                    @endif
+                                            @endif
+                                            @if ($l->id_pengguna == null)
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-xs font-weight-bold">-</span>
+                                                </td>
+                                            @else
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-xs font-weight-bold"> {{ $l->user->nama }} </span>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                    </tbody>
+                                    {{-- @endif --}}
                                 @endforeach
                             </table>
                         </div>

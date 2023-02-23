@@ -73,7 +73,7 @@
                         </div>
                         <div class="card-body pb-2">
                             <div class="table-responsive">
-                                <form role="form" action="{{ url('penawaran') }}" method="post"
+                                <form role="form" action="{{ route('penawaran', $detail->id_barang) }}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3">
@@ -198,7 +198,7 @@
     <p id="demo"></p>
     @if ($detail->status == 'dibuka')
         @foreach ($history as $ud)
-            <form action="{{ Route('auto', $ud->id_history) }}" method="post">
+            <form action="{{ Route('pemenang', $ud->id_history) }}" method="post">
                 @csrf
                 <button type="submit" id="pilih"
                     style="border-left-width: 0px;

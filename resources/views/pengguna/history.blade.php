@@ -7,11 +7,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-lg-6 col-7">
-                                <h6>Lelang
-                                    @if (auth()->user()->role == 'petugas')
-                                        <a href="{{ route('lelang.create') }}"><i class="fa-solid fa-plus"></i></a>
-                                    @endif
-                                </h6>
+                                <h6>Lelang</h6>
                             </div>
                         </div>
                     </div>
@@ -30,20 +26,23 @@
                                             Nama Barang</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Harga Awal</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tanggal Lelang</th>
+                                            Pemenang</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Status</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Harga Akhir</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Tanggal Lelang</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>
                                 <?php $no = 1; ?>
-                                @foreach ($lelangs as $le)
+                                @foreach ($history as $h)
                                     <tbody>
                                         <tr>
                                             <td>
@@ -55,34 +54,25 @@
                                             </td>
                                             <td>
                                                 <div class="avatar-group mt-2">
-                                                    <img src="{{ url('storage/image/barang/' . $le->barang->gambar) }}"
+                                                    <img src="{{ url('storage/image/barang/' . $h->barang->gambar) }}"
                                                         alt="" style="height:100px; width:100px">
                                                 </div>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold"> {{ $le->barang->nama_barang }}
+                                                <span class="text-xs font-weight-bold"> {{ $h->barang->nama_barang }}
                                                 </span>
                                             </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold">
+                                                    Rp. {{ number_format($h->penawaran_harga) }}
+                                                </span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-xs font-weight-bold">
-                                                    Rp.{{ number_format($le->barang->harga_awal) }} </span>
+                                                    {{ date('d F Y', strtotime($h->tgl_lelang)) }} </span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold">
-                                                    {{ date('d/m/Y', strtotime($le->tgl_lelang)) }} </span>
-                                            </td>
-                                            @if ($le->status == 'dibuka')
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-success">Dibuka</span>
-                                                </td>
-                                            @else
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-secondary">Ditutup</span>
-                                                </td>
-                                            @endif
-                                            <td class="align-middle text-center text-sm">
-                                                <a href="{{ route('lelang.show', $le->id_lelang) }}"
+                                                <a href="{{ route('lelang.show', $h->id_lelang) }}"
                                                     class="btn btn-link text-dark px-3 mb-0"><i class="fas fa-info"></i>
                                                     Info
                                                 </a>

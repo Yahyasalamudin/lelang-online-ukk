@@ -19,9 +19,12 @@ class CreateHistoryTable extends Migration
             $table->unsignedBigInteger('id_pengguna');
             $table->integer('penawaran_harga');
             $table->enum('status_pemenang', ['proses', 'menang', 'kalah']);
+            $table->unsignedBigInteger('id_barang');
+            $table->timestamps();
 
             $table->foreign('id_lelang')->references('id_lelang')->on('lelang');
             $table->foreign('id_pengguna')->references('id')->on('users');
+            $table->foreign('id_barang')->references('id_barang')->on('barang');
         });
     }
 

@@ -41,15 +41,18 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/lelang', LelangController::class);
 
     // Penawaran
-    Route::post('/penawaran', [HistoriController::class, 'store'])->name('penawaran');
+    Route::post('/penawaran/{id}', [HistoriController::class, 'store'])->name('penawaran');
 
     // History
     Route::post('/pemenang/{id_history}', [HistoriController::class, 'status'])->name('pemenang');
     // Route::post('/pemenang/{id_history}', [HistoriController::class, 'selectAuto'])->name('auto');
     // Route::get('/select', [HistoriController::class, 'edit']);
     // Route::get('/detail/{lelang}', [LelangController::class, 'view'])->name('autoselect');
-    // Route::get('/select/{lelang}', [LelangController::class, 'show2'])->name('auto');
-    Route::get('/pemenang/{id_history}', [HistoriController::class, 'selectAuto'])->name('auto');
+    // Route::get('/lelang/{lelang}', [LelangController::class, 'show2'])->name('auto');
+    // Route::get('/pemenang/{id_history}', [HistoriController::class, 'selectAuto'])->name('auto');
+
+    // History Lelang
+    Route::get('/history/lelang', [DashboardController::class, 'historyLelang'])->name('history');
 
     // Single report
     Route::get('/report/{id_lelang}', [ReportController::class, 'report'])->name('report');

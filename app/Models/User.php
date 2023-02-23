@@ -36,13 +36,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims()
-    {
-        return [];
+    public function lelang() {
+        return $this->hasMany(Lelang::class);
     }
 }

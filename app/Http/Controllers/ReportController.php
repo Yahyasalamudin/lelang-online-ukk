@@ -39,6 +39,7 @@ class ReportController extends Controller
             ->join('barang', 'lelang.id_barang', 'barang.id_barang')
             ->join('users', 'lelang.id_pengguna', 'users.id')
             ->get();
+
         $pdf = Pdf::loadView('report-lelang', compact('data', 'tgl_awal', 'tgl_akhir'));
         return $pdf->stream();
     }

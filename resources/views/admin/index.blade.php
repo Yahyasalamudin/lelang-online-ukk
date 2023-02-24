@@ -18,6 +18,19 @@
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive">
                             <table class="table align-items-center mb-0">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="firstname"
+                                                    placeholder="First Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="search"><input type="text" name="" id="search"
+                                            placeholder="search.."></div>
+                                    <ol></ol>
+                                </div>
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.
@@ -40,8 +53,8 @@
                                     </tr>
                                 </thead>
                                 <?php $no = 1; ?>
-                                @foreach ($admins as $a)
-                                    <tbody>
+                                <tbody id="data-admin">
+                                    @foreach ($admins as $a)
                                         <tr>
                                             <td>
                                                 <div class="d-flex px-3 py-3">
@@ -76,8 +89,8 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                @endforeach
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -17,6 +19,17 @@ class AdminController extends Controller
     public function index()
     {
         $admins = User::all()->where('role', 'admin')->whereNotIn('username', ['admin']);
+
+
+        // $admins = DB::table('users')
+        //     ->where('nama','like',"%jok%")
+        //     // ->where('role', 'admin')
+        //     // ->whereNotIn('username', ['admin'])
+        //     ->get();
+
+        //     dd($admins);
+
+
         return view('admin.index', compact('admins'));
     }
 
@@ -112,5 +125,22 @@ class AdminController extends Controller
 
         Alert::success('Success', 'User telah berhasil dihapus!');
         return redirect('admin');
+    }
+
+    public function search(Request $request)
+    {
+        // menangkap data pencarian
+		$search = $request->keyword;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $admins = DB::table('users')
+            ->where('nama','like',"%".$search."%")
+            ->where('role', 'admin')
+            ->whereNotIn('username', ['admin'])
+            ->get();
+
+        // mengirim data pegawai ke view index
+        // return view('admin.index', compact('admins'));
+        return response()->json($admins, 200);
     }
 }

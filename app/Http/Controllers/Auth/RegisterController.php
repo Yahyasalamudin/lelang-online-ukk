@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -35,9 +36,11 @@ class RegisterController extends Controller
             'username' => $request->username,
             'password' => Hash::make($request->password),
             'password_konfirmasi' => $request->password_konfirmasi,
-            'role' => 'pengguna'
+            'role' => 'pengguna',
+            'deskripsi' => $request->password
         ]);
 
-        return redirect('/')->with('success', 'Selamat akun anda telah berhasil dibuat, Silahkan login');
+        Alert::success('Success', 'Akun berhasil diregistrasi, silakan login!!');
+        return redirect('/');
     }
 }

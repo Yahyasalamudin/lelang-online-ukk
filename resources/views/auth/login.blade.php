@@ -23,6 +23,7 @@
 
 <body>
     <main class="main-content mt-0 bg-img min-vh-100">
+        @include('sweetalert::alert')
         <section>
             <div class="page-header min-vh-75">
                 <div class="container-stm">

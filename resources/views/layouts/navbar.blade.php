@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
     <title>
@@ -789,6 +791,108 @@
                 }
             })
         });
+    </script>
+
+    <script type="text/javascript">
+        $(function() {
+            // Tuliskan script disini
+
+            $(".form-control").keydown(function(event) {
+                $(this).removeClass("error");
+            });
+
+            $("#firstname").keypress(function(event) {
+
+                if (event.which == 13) {
+
+                    var masukkan = $("#firstname").val();
+                    $("ol").append("<li>" + masukkan + " </li>");
+                    $('[type=text]').val('');
+
+                    if (masukkan == "") {
+
+                        $('.form-control').addClass("error")
+                    }
+                }
+
+            })
+
+            $('#search').on('keyup', function() {
+                //variable untuk menampung nilai input dari keyword
+                const keyword = $(this).val();
+
+                $.ajax({
+                    url: '/admin/search',
+                    type: 'post',
+                    data: 'keyword=' + keyword,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        if (response) {
+                            var i = 1;
+                            var row = "";
+                            response.forEach(data => {
+                                row += `<tr>
+                                            <td>
+                                                <div class="d-flex px-3 py-3">
+                                                    <div class="align-middle text-center text-sm">
+                                                        <h6 class="mb-0 text-sm">` + i + `</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold">` + data.nama + `</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold">` + data.no_hp + `</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold">` + data.username + `</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold">` + data.deskripsi + `</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <a href="{{ route('admin.edit', $a->id) }}"
+                                                    class="btn btn-link text-dark px-3 mb-0"><i
+                                                        class="fas fa-pencil-alt text-dark me-2"
+                                                        aria-hidden="true"></i>Edit</a>
+                                                <form action="{{ route('admin.destroy', $a->id) }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit"
+                                                        class="btn btn-link delete-confirm text-danger text-gradient px-3 mb-0"><i
+                                                            class="far fa-trash-alt me-2"></i>Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>`;
+                                i++;
+                            });
+                            $('#data-admin').html(row);
+                        } else {
+                            Swal.fire("Data tidak ditemukan");
+                        }
+                    }
+                });
+            });
+
+            // $("#search").keyup(function(event) {
+
+            //     var filter = $(this).val(),
+            //         count = 0;
+            //     $("ol li").each(function() {
+
+            //         if ($(this).text().search(filter, "i") < 0) {
+            //             $(this).fadeOut();
+            //         } else {
+            //             $(this).show();
+            //             count++;
+            //         }
+            //     })
+
+            // })
+        })
     </script>
 </body>
 

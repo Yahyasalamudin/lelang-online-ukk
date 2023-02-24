@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'pengguna',
             'password' => Hash::make('pengguna'),
             'role' => 'pengguna',
+            'deskripsi' => 'pengguna'
         ]);
 
         User::insert([
@@ -50,6 +51,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'yahya',
             'password' => Hash::make('pengguna'),
             'role' => 'pengguna',
+            'deskripsi' => 'pengguna'
         ]);
         User::insert([
             'nama' => 'Dwi Khusnul',
@@ -57,6 +59,8 @@ class DatabaseSeeder extends Seeder
             'username' => 'dwikhusnul',
             'password' => Hash::make('dwikhusnul'),
             'role' => 'pengguna',
+            'deskripsi' => 'dwikhusnul'
+
         ]);
         User::insert([
             'nama' => 'Jokowi',
@@ -64,6 +68,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'jokowi',
             'password' => Hash::make('jokowi'),
             'role' => 'pengguna',
+            'deskripsi' => 'jokowi'
         ]);
         User::insert([
             'nama' => 'Puan',
@@ -71,6 +76,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'puan',
             'password' => Hash::make('puan'),
             'role' => 'pengguna',
+            'deskripsi' => 'puan'
         ]);
     }
 }

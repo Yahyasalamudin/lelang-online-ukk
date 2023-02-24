@@ -56,7 +56,7 @@
                                 <select class="form-control" name="role" id="role">
                                     <option value="admin">{{ $user->role }}</option>
                                     <option value="petugas">petugas</option>
-                                    <option value="pengguna">pengguna</option>
+                                    {{-- <option value="pengguna">pengguna</option> --}}
                                 </select>
                             </div>
                             <div class="text-center">

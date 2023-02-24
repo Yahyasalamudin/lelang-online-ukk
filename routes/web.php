@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
 
     // CRUD Admin
     Route::resource('/admin', AdminController::class);
+    Route::post('/admin/search', [AdminController::class, 'search'])->name('search');
 
     // CRUD Petugas
     Route::resource('/petugas', PetugasController::class);

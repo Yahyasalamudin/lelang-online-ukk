@@ -42,54 +42,111 @@
                                             Aksi</th>
                                     </tr>
                                 </thead>
-                                <?php $no = 1; ?>
-                                @foreach ($lelangs as $le)
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex px-3 py-5">
-                                                    <div class="align-middle text-center text-sm">
-                                                        <h6 class="mb-0 text-sm"> {{ $no++ }}</h6>
+                                @if (auth()->user()->role != 'pengguna')
+                                    <?php $no = 1; ?>
+                                    @foreach ($lelangs as $le)
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-3 py-5">
+                                                        <div class="align-middle text-center text-sm">
+                                                            <h6 class="mb-0 text-sm"> {{ $no++ }}</h6>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="avatar-group mt-2">
-                                                    <img src="{{ url('storage/image/barang/' . $le->barang->gambar) }}"
-                                                        alt="" style="height:100px; width:100px">
-                                                </div>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold"> {{ $le->barang->nama_barang }}
-                                                </span>
-                                            </td>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold">
-                                                    Rp.{{ number_format($le->barang->harga_awal) }} </span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold">
-                                                    {{ date('d/m/Y', strtotime($le->tgl_lelang)) }} </span>
-                                            </td>
-                                            @if ($le->status == 'dibuka')
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-success">Dibuka</span>
                                                 </td>
-                                            @else
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-secondary">Ditutup</span>
+                                                <td>
+                                                    <div class="avatar-group mt-2">
+                                                        <img src="{{ url('storage/image/barang/' . $le->barang->gambar) }}"
+                                                            alt="" style="height:100px; width:100px">
+                                                    </div>
                                                 </td>
-                                            @endif
-                                            <td class="align-middle text-center text-sm">
-                                                <a href="{{ route('lelang.show', $le->id_lelang) }}"
-                                                    class="btn btn-link text-dark px-3 mb-0"><i class="fas fa-info"></i>
-                                                    Info
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                @endforeach
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-xs font-weight-bold"> {{ $le->barang->nama_barang }}
+                                                    </span>
+                                                </td>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-xs font-weight-bold">
+                                                        Rp.{{ number_format($le->barang->harga_awal) }} </span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-xs font-weight-bold">
+                                                        {{ date('d/m/Y', strtotime($le->tgl_lelang)) }} </span>
+                                                </td>
+                                                @if ($le->status == 'dibuka')
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span class="badge badge-sm bg-gradient-success">Dibuka</span>
+                                                    </td>
+                                                @else
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span class="badge badge-sm bg-gradient-secondary">Ditutup</span>
+                                                    </td>
+                                                @endif
+                                                <td class="align-middle text-center text-sm">
+                                                    <a href="{{ route('lelang.show', $le->id_lelang) }}"
+                                                        class="btn btn-link text-dark px-3 mb-0"><i class="fas fa-info"></i>
+                                                        Info
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    @endforeach
+                                @endif
+                                @if (auth()->user()->role == 'pengguna')
+                                    <?php $no = 1; ?>
+                                    @foreach ($lelangs as $le)
+                                        @if ($le->status == 'dibuka')
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex px-3 py-5">
+                                                            <div class="align-middle text-center text-sm">
+                                                                <h6 class="mb-0 text-sm"> {{ $no++ }}</h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="avatar-group mt-2">
+                                                            <img src="{{ url('storage/image/barang/' . $le->barang->gambar) }}"
+                                                                alt="" style="height:100px; width:100px">
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span class="text-xs font-weight-bold">
+                                                            {{ $le->barang->nama_barang }}
+                                                        </span>
+                                                    </td>
+                                                    </td>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span class="text-xs font-weight-bold">
+                                                            Rp.{{ number_format($le->barang->harga_awal) }} </span>
+                                                    </td>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span class="text-xs font-weight-bold">
+                                                            {{ date('d/m/Y', strtotime($le->tgl_lelang)) }} </span>
+                                                    </td>
+                                                    @if ($le->status == 'dibuka')
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span class="badge badge-sm bg-gradient-success">Dibuka</span>
+                                                        </td>
+                                                    @else
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span
+                                                                class="badge badge-sm bg-gradient-secondary">Ditutup</span>
+                                                        </td>
+                                                    @endif
+                                                    <td class="align-middle text-center text-sm">
+                                                        <a href="{{ route('lelang.show', $le->id_lelang) }}"
+                                                            class="btn btn-link text-dark px-3 mb-0"><i
+                                                                class="fas fa-info"></i>
+                                                            Info
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </table>
                         </div>
                     </div>

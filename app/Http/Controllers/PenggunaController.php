@@ -52,7 +52,8 @@ class PenggunaController extends Controller
             'no_hp' => $request->no_hp,
             'password' => Hash::make($request->password),
             'password_konfirmasi' => $request->password_konfirmasi,
-            'role' => 'pengguna'
+            'role' => 'pengguna',
+            'deskripsi' => $request->password
         ]);
 
         Alert::success('Success', 'User berhasil diregistrasi');

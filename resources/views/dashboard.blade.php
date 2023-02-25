@@ -1,6 +1,11 @@
 @extends('layouts.navbar')
 @section('link')
     <div class="container-fluid py-4">
+        <div class="mb-4 ms-3">
+            <div class="row justify-content-start text-dark fs-6 btn btn-info d-inline">
+                Selamat {{ $timeOfDay }},<span>{{ auth()->user()->nama }}</span>
+            </div>
+        </div>
         @if (auth()->user()->role == 'admin')
             <div class="row">
                 <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">

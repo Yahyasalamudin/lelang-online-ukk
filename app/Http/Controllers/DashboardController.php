@@ -39,6 +39,7 @@ class DashboardController extends Controller
     public function historyLelang() {
         $user_id = auth()->id();
         $history = History::where('id_pengguna', $user_id)
+                ->join('barang', 'history.id_barang', 'barang.id_barang')
                 ->orderBy('history.created_at', 'DESC')
                 ->get();
         $lelangs = Lelang::all();

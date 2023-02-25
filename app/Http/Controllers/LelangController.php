@@ -45,7 +45,15 @@ class LelangController extends Controller
      */
     public function create()
     {
-        $databarang = DB::table('barang')->select('*')->get();
+        // $databarang = DB::table('barang')->select('*')->get();
+        $databarang = DB::table('barang')
+                ->whereNotExists(function ($query){
+                    $query->select(DB::raw(1))
+                          ->from('lelang')
+                          ->whereRaw('lelang.id_barang = barang.id_barang');
+                })
+                ->select('*')
+                ->get();
 
         return view('lelang.create', compact('databarang'));
     }
@@ -60,13 +68,13 @@ class LelangController extends Controller
     {
         $cek = DB::table('lelang')
             ->where('lelang.id_barang', $request->id_barang)
-            ->where('status', 'dibuka')
             ->join('barang', 'lelang.id_barang', '=', 'barang.id_barang')
             ->get();
 
         $cek2 = count($cek);
 
         if ($cek2 == 1) {
+            Alert::danger('Gagal', 'Barang ini sudah dilelang');
             return redirect()->back();
         } else {
             Lelang::create([

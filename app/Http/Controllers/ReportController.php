@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lelang;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 class ReportController extends Controller
 {
     public function index() {
+        return view('cetak-laporan');
+    }
+
+    public function cetaklelang() {
         return view('tanggal-lelang');
     }
 
@@ -28,6 +33,29 @@ class ReportController extends Controller
             ->get();
 
         $pdf = Pdf::loadView('report', compact('historyd', 'detaild'));
+        return $pdf->stream();
+    }
+
+    public function cetakadmin() {
+        $user = User::all()->where('role', 'admin')->whereNotIn('username', ['admin']);
+        $title = "Admin";
+
+        $pdf = Pdf::loadView('report-user', compact('user', 'title'));
+        return $pdf->stream();
+    }
+
+    public function cetakpetugas() {
+        $user = User::all()->where('role', 'petugas');
+        $title = "Petugas";
+
+        $pdf = Pdf::loadView('report-user', compact('user', 'title'));
+        return $pdf->stream();
+    }
+
+    public function cetakpengguna() {
+        $user = User::all()->where('role', 'pengguna');
+
+        $pdf = Pdf::loadView('report-pengguna', compact('user'));
         return $pdf->stream();
     }
 

@@ -92,11 +92,23 @@ class PetugasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nama' => 'required',
+            'no_hp' => 'required',
+            'username' => 'required|unique:users',
+            'password' => 'required',
+        ]);
+
         User::find($id)->update([
+            'nama' => $request->nama,
+            'no_hp' => $request->no_hp,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'deskripsi' => $request->password,
             'role' => $request->role
         ]);
 
-        Alert::success('Success', 'Role berhasil diubah');
+        Alert::success('Success', 'Berhasil mengubah data user');
         return redirect('petugas');
     }
 

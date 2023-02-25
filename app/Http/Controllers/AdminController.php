@@ -95,11 +95,23 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nama' => 'required',
+            'no_hp' => 'required',
+            'username' => 'required|unique:users',
+            'password' => 'required',
+        ]);
+
         User::find($id)->update([
+            'nama' => $request->nama,
+            'no_hp' => $request->no_hp,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'deskripsi' => $request->password,
             'role' => $request->role
         ]);
 
-        Alert::success('Success', 'Role berhasil diubah');
+        Alert::success('Success', 'Berhasil mengubah data user');
         return redirect('admin');
     }
 
@@ -119,18 +131,18 @@ class AdminController extends Controller
 
     public function search(Request $request)
     {
-        // menangkap data pencarian
-		$search = $request->keyword;
+        $users = User::where('role', 'admin')
+                    ->whereNotIn('username', ['admin'])
+                    ->get();
 
-        // mengambil data dari table pegawai sesuai pencarian data
-        $admins = DB::table('users')
-            ->where('nama','like',"%".$search."%")
-            ->where('role', 'admin')
-            ->whereNotIn('username', ['admin'])
-            ->get();
+        if($request->keyword != ''){
+            $users = User::where('username','LIKE','%'.$request->keyword.'%')
+                    ->whereNotIn('username', ['admin'])
+                    ->where('role', 'admin')->get();
+        }
 
-        // mengirim data pegawai ke view index
-        // return view('admin.index', compact('admins'));
-        return response()->json($admins, 200);
+        return response()->json([
+            'users' => $users
+        ]);
     }
 }

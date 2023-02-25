@@ -34,9 +34,11 @@
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Password</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Aksi</th>
+                                        @if (auth()->user()->role == 'admin')
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <?php $no = 1; ?>
@@ -62,19 +64,21 @@
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-xs font-weight-bold"> {{ $p->deskripsi }} </span>
                                             </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <a href="{{ route('petugas.edit', $p->id) }}"
-                                                    class="btn btn-link text-dark px-3 mb-0"><i
-                                                        class="fas fa-pencil-alt text-dark me-2"
-                                                        aria-hidden="true"></i>Edit</a>
-                                                <form action="{{ route('petugas.destroy', $p->id) }}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit"
-                                                        class="btn btn-link delete-confirm text-danger text-gradient px-3 mb-0"><i
-                                                            class="far fa-trash-alt me-2"></i>Hapus</button>
-                                                </form>
-                                            </td>
+                                            @if (auth()->user()->role == 'admin')
+                                                <td class="align-middle text-center text-sm">
+                                                    <a href="{{ route('petugas.edit', $p->id) }}"
+                                                        class="btn btn-link text-dark px-3 mb-0"><i
+                                                            class="fas fa-pencil-alt text-dark me-2"
+                                                            aria-hidden="true"></i>Edit</a>
+                                                    <form action="{{ route('petugas.destroy', $p->id) }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit"
+                                                            class="btn btn-link delete-confirm text-danger text-gradient px-3 mb-0"><i
+                                                                class="far fa-trash-alt me-2"></i>Hapus</button>
+                                                    </form>
+                                                </td>
+                                            @endif
                                         </tr>
                                     </tbody>
                                 @endforeach

@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
 
     // CRUD Admin
     Route::resource('/admin', AdminController::class);
-    // Route::post('/admin/search', [AdminController::class, 'search'])->name('search');
+    Route::post('/admin/search', [AdminController::class, 'search'])->name('search');
 
     // CRUD Petugas
     Route::resource('/petugas', PetugasController::class);
@@ -48,11 +48,6 @@ Route::middleware(['auth'])->group(function () {
 
     // History
     Route::post('/pemenang/{id_history}', [HistoriController::class, 'status'])->name('pemenang');
-    // Route::post('/pemenang/{id_history}', [HistoriController::class, 'selectAuto'])->name('auto');
-    // Route::get('/select', [HistoriController::class, 'edit']);
-    // Route::get('/detail/{lelang}', [LelangController::class, 'view'])->name('autoselect');
-    // Route::get('/lelang/{lelang}', [LelangController::class, 'show2'])->name('auto');
-    // Route::get('/pemenang/{id_history}', [HistoriController::class, 'selectAuto'])->name('auto');
 
     // Pemenang
     Route::get('/winner/detail/{id}', [DashboardController::class, 'show'])->name('winner-detail');
@@ -67,6 +62,10 @@ Route::middleware(['auth'])->group(function () {
 
     // All Report
     Route::get('/cetak', [ReportController::class, 'index'])->name('cetak-Laporan');
+    Route::get('/cetak/admin', [ReportController::class, 'cetakadmin'])->name('cetak-admin');
+    Route::get('/cetak/petugas', [ReportController::class, 'cetakpetugas'])->name('cetak-petugas');
+    Route::get('/cetak/pengguna', [ReportController::class, 'cetakpengguna'])->name('cetak-pengguna');
+    Route::get('/cetak/tanggal', [ReportController::class, 'cetaklelang'])->name('cetak-lelang');
     Route::get('/cetak/lelang', [ReportController::class, 'reportTgl'])->name('cetak.tgl-lelang');
     Route::get('/cetak/pemenang/{id_lelang}', [ReportController::class, 'reportPemenang'])->name('cetak-pemenang');
 

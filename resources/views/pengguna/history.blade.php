@@ -48,12 +48,12 @@
                                             </td>
                                             <td>
                                                 <div class="avatar-group mt-2">
-                                                    <img src="{{ url('storage/image/barang/' . $h->barang->gambar) }}"
+                                                    <img src="{{ url('storage/image/barang/' . $h->gambar) }}"
                                                         alt="" style="height:100px; width:100px">
                                                 </div>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold"> {{ $h->barang->nama_barang }}
+                                                <span class="text-xs font-weight-bold"> {{ $h->nama_barang }}
                                                 </span>
                                             </td>
                                             <td class="align-middle text-center text-sm">

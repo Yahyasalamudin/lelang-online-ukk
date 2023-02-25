@@ -119,12 +119,6 @@
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Tanggal Lelang</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Harga Akhir</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Pemenang</th>
                                     </tr>
                                 </thead>
                                 <?php $no = 1; ?>
@@ -156,25 +150,6 @@
                                                     <span class="text-xs font-weight-bold">
                                                         {{ date('d/m/Y', strtotime($l->tgl_lelang)) }} </span>
                                                 </td>
-                                                @if ($l->harga_akhir == null)
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-xs font-weight-bold">-</span>
-                                                    </td>
-                                                @else
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-xs font-weight-bold">
-                                                            Rp.{{ number_format($l->harga_akhir) }} </span>
-                                                    </td>
-                                                @endif
-                                                @if ($l->id_pengguna == null)
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-xs font-weight-bold">-</span>
-                                                    </td>
-                                                @else
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-xs font-weight-bold"> {{ $l->user->nama }} </span>
-                                                    </td>
-                                                @endif
                                             </tr>
                                         </tbody>
                                     @endif

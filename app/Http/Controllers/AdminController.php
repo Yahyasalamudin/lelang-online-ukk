@@ -20,16 +20,6 @@ class AdminController extends Controller
     {
         $admins = User::all()->where('role', 'admin')->whereNotIn('username', ['admin']);
 
-
-        // $admins = DB::table('users')
-        //     ->where('nama','like',"%jok%")
-        //     // ->where('role', 'admin')
-        //     // ->whereNotIn('username', ['admin'])
-        //     ->get();
-
-        //     dd($admins);
-
-
         return view('admin.index', compact('admins'));
     }
 

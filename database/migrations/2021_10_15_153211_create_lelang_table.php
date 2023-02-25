@@ -22,6 +22,7 @@ class CreateLelangTable extends Migration
             $table->unsignedBigInteger('id_pengguna')->nullable();
             $table->unsignedBigInteger('id_petugas');
             $table->enum('status', ['dibuka', 'ditutup']);
+            $table->boolean('read');
 
             $table->foreign('id_barang')->references('id_barang')->on('barang');
             $table->foreign('id_pengguna')->references('id')->on('users');

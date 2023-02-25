@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lelang;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -112,5 +114,29 @@ class PenggunaController extends Controller
 
         Alert::success('Success', 'User telah berhasil dihapus!');
         return redirect('pengguna');
+    }
+
+    public function win() {
+        $user = auth()->user();
+        $lelang = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->select('*')
+            ->get();
+
+        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->where('read', '=', 0)
+            ->select('*')
+            ->count();
+        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->where('read', '=', 0)
+            ->select('*')
+            ->get();
+
+        return view('pengguna.win-lelang', compact('lelang', 'notif', 'notif2'));
     }
 }

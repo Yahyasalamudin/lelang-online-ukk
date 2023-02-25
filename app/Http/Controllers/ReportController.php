@@ -31,7 +31,7 @@ class ReportController extends Controller
         return $pdf->stream();
     }
 
-    public function cetak(Request $request) {
+    public function reportTgl(Request $request) {
         $tgl_awal = $request->tgl_awal;
         $tgl_akhir = $request->tgl_akhir;
 
@@ -41,6 +41,18 @@ class ReportController extends Controller
             ->get();
 
         $pdf = Pdf::loadView('report-lelang', compact('data', 'tgl_awal', 'tgl_akhir'));
+        return $pdf->stream();
+    }
+
+    public function reportPemenang(Request $request, $id)
+    {
+        $detail = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_lelang', '=', $id)
+            ->select('*')
+            ->first();
+
+        $pdf = Pdf::loadView('report-win', compact('detail'));
         return $pdf->stream();
     }
 }

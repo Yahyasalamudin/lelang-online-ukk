@@ -20,7 +20,22 @@ class LelangController extends Controller
     public function index()
     {
         $lelangs = Lelang::all();
-        return view('lelang.index', compact('lelangs'));
+
+        $user = auth()->user();
+        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->where('read', '=', 0)
+            ->select('*')
+            ->count();
+        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->where('read', '=', 0)
+            ->select('*')
+            ->get();
+
+        return view('lelang.index', compact('lelangs', 'notif', 'notif2'));
     }
 
     /**
@@ -61,6 +76,7 @@ class LelangController extends Controller
                 'id_petugas' => auth()->user()->id,
                 'id_pengguna' => $request->id_pengguna,
                 'harga_akhir' => $request->harga_akhir,
+                'read' => 0
             ]);
 
             Alert::success('Success', 'Barang berhasil dilelang');
@@ -99,28 +115,21 @@ class LelangController extends Controller
             ->get();
 
         $u  =  DB::table('users')->first();
-        // dd($u);
-        // return response()->json(['data'=>$detail, $barang]);
-        // dd($detail);
-        return view('lelang.detail', compact('detail', 'history', 'ha', 'u' ));
+
+        $user = auth()->user();
+        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->where('read', '=', 0)
+            ->select('*')
+            ->count();
+        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->where('read', '=', 0)
+            ->select('*')
+            ->get();
+
+        return view('lelang.detail', compact('detail', 'history', 'ha', 'u', 'notif', 'notif2'));
     }
-
-    // public function show2($id) {
-    //     $detail = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-    //         ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-    //         ->where('lelang.id_lelang', '=', $id)
-    //         ->select('*')
-    //         ->first();
-
-    //     $max = History::max('penawaran_harga');
-
-    //     $ha = DB::table('history')->leftJoin('users', 'history.id_pengguna', 'users.id')
-    //         ->select('users.*', 'history.*')
-    //         ->where('history.id_lelang', '=', $id)
-    //         ->where('penawaran_harga', $max)
-    //         ->orderBy('history.penawaran_harga', 'DESC')
-    //         ->get();
-
-    //     return view('lelang.detail', compact('ha', 'detail'));
-    // }
 }

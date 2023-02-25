@@ -20,6 +20,7 @@ class Lelang extends Model
         'id_pengguna',
         'id_petugas',
         'status',
+        'read'
     ];
 
     public function barang()

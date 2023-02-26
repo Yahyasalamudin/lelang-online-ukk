@@ -59,7 +59,7 @@
                             <div class="row px-xl-5 px-sm-4 px-3">
                                 <div class="mt-2 position-relative text-center">
                                     <p
-                                        class="text-sm font-weight-bold mb-2 text-secondary text-border d-inline z-index-2 bg-white px-3">
+                                        class="text-sm font-weight-bold mb-2 text-dark text-border d-inline z-index-2 bg-white px-3">
                                         Register
                                     </p>
                                 </div>
@@ -127,8 +127,9 @@
                                         <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign
                                             up</button>
                                     </div>
-                                    <p class="text-sm mt-3 mb-0">Already have an account? <a href="/"
-                                            class="text-dark font-weight-bolder">Sign in</a></p>
+                                    <p class="text-sm mt-3 mb-0">Already have an account? <a
+                                            href="{{ route('login') }}" class="text-dark font-weight-bolder">Sign
+                                            in</a></p>
                                 </form>
                             </div>
                         </div>

@@ -2,7 +2,7 @@
 @section('link')
     <div class="container-fluid py-4">
         <div class="mb-4 ms-3">
-            <div class="row justify-content-start text-dark fs-6 btn btn-info d-inline">
+            <div class="row justify-content-start fs-6 badge bg-gradient-info d-inline">
                 Selamat {{ $timeOfDay }},<span>{{ auth()->user()->nama }}</span>
             </div>
         </div>
@@ -110,19 +110,18 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder opacity-7">No.
                                         </th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder opacity-7 ps-2">
                                             Gambar</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Nama Barang</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Status</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Tanggal Lelang</th>
                                     </tr>
                                 </thead>

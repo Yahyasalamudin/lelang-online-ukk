@@ -38,7 +38,7 @@
         id="sidenav-main">
         @if (auth()->user()->role == 'admin')
             <div class="sidenav-header">
-                <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                     aria-hidden="true" id="iconSidenav"></i>
                 <a class="navbar-brand m-0" href=" /dashboard" target="_blank">
                     <img src="{{ asset('assets/img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="main_logo">
@@ -257,9 +257,9 @@
                     <li class="nav-item mt-3">
                         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link  {{ Route::is('') ? 'active' : '' }}"
-                            href="{{ route('admin.index', auth()->user()->id) }}">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-bold {{ Route::is('editprofile') ? 'active' : '' }}"
+                            href="{{ route('editprofile', auth()->user()->id) }}">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
@@ -284,9 +284,9 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">Edit Profil</span>
+                            <span class="nav-link-text ms-1">Edit Profile</span>
                         </a>
-                    </li> --}}
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark fw-bold " href="{{ route('logout') }}">
                             <div
@@ -320,7 +320,7 @@
 
         @if (auth()->user()->role == 'petugas')
             <div class="sidenav-header">
-                <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                     aria-hidden="true" id="iconSidenav"></i>
                 <a class="navbar-brand m-0" href=" /dashboard" target="_blank">
                     <img src="{{ asset('assets/img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="main_logo">
@@ -512,9 +512,9 @@
                     <li class="nav-item mt-3">
                         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link  {{ Route::is('petugas.edit') ? 'active' : '' }}"
-                            href="{{ route('petugas.edit', auth()->user()->id) }}">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-bold {{ Route::is('editprofile') ? 'active' : '' }}"
+                            href="{{ route('editprofile', auth()->user()->id) }}">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
@@ -539,9 +539,9 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">Edit Profil</span>
+                            <span class="nav-link-text ms-1">Edit Profile</span>
                         </a>
-                    </li> --}}
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark fw-bold " href="{{ route('logout') }}">
                             <div
@@ -575,7 +575,7 @@
 
         @if (auth()->user()->role == 'pengguna')
             <div class="sidenav-header">
-                <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                     aria-hidden="true" id="iconSidenav"></i>
                 <a class="navbar-brand m-0" href=" /dashboard" target="_blank">
                     <img src="{{ asset('assets/img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="main_logo">
@@ -710,9 +710,9 @@
                     <li class="nav-item mt-3">
                         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link  {{ Route::is('pengguna.index') ? 'active' : '' }}"
-                            href="{{ route('pengguna.index', auth()->user()->id) }}">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-bold {{ Route::is('editprofile') ? 'active' : '' }}"
+                            href="{{ route('editprofile', auth()->user()->id) }}">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
@@ -738,9 +738,9 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">Edit Profil</span>
+                            <span class="nav-link-text ms-1">Edit Profile</span>
                         </a>
-                    </li> --}}
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark fw-bold " href="{{ route('logout') }}">
                             <div
@@ -817,7 +817,7 @@
                                                                             memenagkan</b>
                                                                         {{ $l2->nama_barang }}</span>
                                                                 </h6>
-                                                                <p class="text-xs text-secondary mb-0 ">
+                                                                <p class="text-xs text-dark mb-0 ">
                                                                     <i class="fa fa-clock me-1"></i>
                                                                     {{ date('d, M Y, H:i', strtotime($l2->tgl_akhir)) }}
                                                                 </p>

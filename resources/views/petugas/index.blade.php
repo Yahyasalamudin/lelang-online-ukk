@@ -20,23 +20,23 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder opacity-7">No.
                                         </th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Nama</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Nomor HP</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Username</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Password</th>
                                         @if (auth()->user()->role == 'admin')
                                             <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                                 Aksi</th>
                                         @endif
                                     </tr>

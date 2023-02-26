@@ -21,6 +21,7 @@ class ReportController extends Controller
     public function report(Request $request, $id)
     {
         $detaild = Lelang::join('users', 'lelang.id_petugas', 'users.id')
+            ->where('id_lelang', '=', $id)
             ->select('*')
             ->get();
 

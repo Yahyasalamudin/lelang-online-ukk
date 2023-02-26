@@ -12,8 +12,11 @@ use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ReportController;
 
+// Landing
+Route::get('/', [LoginController::class, 'index'])->name('welcome');
+
 // Auth
-Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionLogin'])->name('actionLogin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -24,6 +27,14 @@ Route::post('/actionregister', [RegisterController::class, 'actionRegister'])->n
 Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Edit Profile
+    Route::get('/edit/profile/{id}', [RegisterController::class, 'editProfile'])->name('editprofile');
+    Route::put('/update/profile/{id}', [RegisterController::class, 'updateProfile'])->name('updateprofile');
+
+    // Edit Password
+    Route::get('/edit/password/{id}', [RegisterController::class, 'editPassword'])->name('editpassword');
+    Route::put('/update/password/{id}', [RegisterController::class, 'updatePassword'])->name('updatepassword');
 
     // CRUD Admin
     Route::resource('/admin', AdminController::class);

@@ -60,6 +60,11 @@
         <tr>
             <td class="title">
                 Laporan Lelang
+                <br>
+                Tanggal :
+                @foreach ($detaild as $h)
+                    {{ date('d F Y, H:i', strtotime($h->tgl_lelang)) }}
+                @endforeach
             </td>
         </tr>
     </table>

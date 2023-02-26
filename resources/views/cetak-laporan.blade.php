@@ -6,15 +6,18 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="row">
-                            <div class="col-lg-6 col-7">
+                            <div class="col-lg-6 col-7 ms-9">
                                 <h6>Cetak Laporan</h6>
                             </div>
                         </div>
                     </div>
                     <div class="card-body d-inline">
-                        <div class="input-group mb-3 mx-auto w-50 row justify-content-center">
-                            <a href="{{ route('cetak-admin') }}" class="btn btn-info" target="_blank">Cetak data admin</a>
-                        </div>
+                        @if (auth()->user()->role == 'admin')
+                            <div class="input-group mb-3 mx-auto w-50 row justify-content-center">
+                                <a href="{{ route('cetak-admin') }}" class="btn btn-info" target="_blank">Cetak data
+                                    admin</a>
+                            </div>
+                        @endif
                         <div class="input-group mb-3 mx-auto w-50 row justify-content-center">
                             <a href="{{ route('cetak-petugas') }}" class="btn btn-info" target="_blank">Cetak data
                                 Petugas</a>

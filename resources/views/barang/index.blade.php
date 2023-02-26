@@ -16,25 +16,25 @@
                             <table class="table align-items-center mb-0 col-12">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder opacity-7">No.
                                         </th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Nama Barang</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Gambar</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Tanggal Daftar</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Harga Awal</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Deskripsi</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>

@@ -4,10 +4,19 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Lelang;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function index() {
+        if (Auth::check()) {
+            return redirect('dashboard');
+        }else{
+            return view('welcome');
+        }
+    }
+
     public function login()
     {
         if (Auth::check()) {
@@ -32,7 +41,7 @@ class LoginController extends Controller
         if (Auth::Attempt($data)) {
             return redirect('dashboard');
         }else{
-            return redirect('/')->with('error', 'Username atau Password Salah');
+            return redirect('/login')->with('error', 'Username atau Password Salah');
         }
     }
 

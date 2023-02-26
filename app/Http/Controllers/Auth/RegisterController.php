@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -42,5 +43,84 @@ class RegisterController extends Controller
 
         Alert::success('Success', 'Akun berhasil diregistrasi, silakan login!!');
         return redirect('/');
+    }
+
+    public function editProfile($id) {
+        $user = User::findOrFail($id);
+
+        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->where('read', '=', 0)
+            ->select('*')
+            ->count();
+        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->where('read', '=', 0)
+            ->select('*')
+            ->get();
+
+        return view('edit-profile', compact('user', 'notif', 'notif2'));
+    }
+
+    public function updateProfile(Request $request, $id) {
+        $request->validate([
+            'nama' => 'required',
+            'no_hp' => 'required',
+            'username' => 'required|unique:users',
+        ]);
+
+        User::find($id)->update([
+            'nama' => $request->nama,
+            'no_hp' => $request->no_hp,
+            'username' => $request->username,
+        ]);
+
+        Alert::success('Success', 'Berhasil mengedit data');
+        return redirect()->back();
+    }
+
+    public function editPassword($id) {
+        $user = User::findOrFail($id);
+
+        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->where('read', '=', 0)
+            ->select('*')
+            ->count();
+        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+            ->where('lelang.id_pengguna', '=', $user->id)
+            ->where('read', '=', 0)
+            ->select('*')
+            ->get();
+
+        return view('edit-password', compact('user', 'notif', 'notif2'));
+    }
+
+    public function updatePassword(Request $request, $id) {
+        $user = auth()->user();
+
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|min:4',
+            'confirm_password' => 'required|same:password',
+        ]);
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->withErrors(['current_password' => 'Password tidak cocok!']);
+        }
+
+        User::find($id)->update([
+            'current_password' => $request->current_password,
+            'password' => Hash::make($request->password),
+            'confirm_password' => $request->confirm_password,
+            'deskripsi' => $request->password,
+        ]);
+
+        Alert::success('Success', 'Password berhasil diedit');
+        return redirect()->back();
     }
 }

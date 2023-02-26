@@ -133,7 +133,7 @@
                                                 class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                                 Status</th>
                                         @endif
-                                        @if (auth()->user()->role == 'pengguna' && $detail->status == 'ditutup')
+                                        @if (auth()->user()->role != 'petugas' && $detail->status == 'ditutup')
                                             <th
                                                 class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                                 Status</th>
@@ -177,7 +177,7 @@
                                                         @endif
                                                     </form>
                                                 @endif
-                                                @if (auth()->user()->role == 'pengguna' && $detail->status == 'ditutup')
+                                                @if (auth()->user()->role != 'petugas' && $detail->status == 'ditutup')
                                                     @if ($ud->status_pemenang == 'kalah')
                                                         <span class="btn btn-icon btn-danger">Kalah</span>
                                                     @else

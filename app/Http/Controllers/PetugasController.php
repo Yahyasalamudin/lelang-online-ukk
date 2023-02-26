@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lelang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -120,9 +121,17 @@ class PetugasController extends Controller
      */
     public function destroy($id)
     {
-        User::where('id', $id)->delete();
+        $user = User::find($id);
+        $lelang = Lelang::where('id_petugas', $id)->get();
 
-        Alert::success('Success', 'User telah berhasil dihapus!');
-        return redirect('petugas');
+        if ($lelang->count() > 0) {
+            Alert::warning('Peringatan', 'Petugas telah membuka lelang, tidak dapat dihapus!');
+            return redirect()->back();
+        } else {
+            $user->delete();
+
+            Alert::success('Success', 'User telah berhasil dihapus!');
+            return redirect('pengguna');
+        }
     }
 }

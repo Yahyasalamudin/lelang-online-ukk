@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(25)->create();
 
         User::insert([
             'nama' => 'admin',
@@ -37,15 +37,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::insert([
-            'nama' => 'pengguna',
-            'no_hp' => '081345678901',
-            'username' => 'pengguna',
-            'password' => Hash::make('pengguna'),
-            'role' => 'pengguna',
-            'deskripsi' => 'pengguna'
-        ]);
-
-        User::insert([
             'nama' => 'Yahya',
             'no_hp' => '081345678901',
             'username' => 'yahya',
@@ -53,6 +44,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'pengguna',
             'deskripsi' => 'pengguna'
         ]);
+
         User::insert([
             'nama' => 'Dwi Khusnul',
             'no_hp' => '081345678901',
@@ -60,7 +52,6 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('dwikhusnul'),
             'role' => 'pengguna',
             'deskripsi' => 'dwikhusnul'
-
         ]);
         User::insert([
             'nama' => 'Jokowi',

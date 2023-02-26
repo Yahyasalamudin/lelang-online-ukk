@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Lelang;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -110,10 +111,18 @@ class PenggunaController extends Controller
      */
     public function destroy($id)
     {
-        User::where('id', $id)->delete();
+        $user = User::find($id);
+        $history = History::where('id_pengguna', $id)->get();
 
-        Alert::success('Success', 'User telah berhasil dihapus!');
-        return redirect('pengguna');
+        if ($history->count() > 0) {
+            Alert::warning('Peringatan', 'User ini telah melakukan tawaran, tidak dapat dihapus!');
+            return redirect()->back();
+        } else {
+            $user->delete();
+
+            Alert::success('Success', 'User telah berhasil dihapus!');
+            return redirect('pengguna');
+        }
     }
 
     public function win() {

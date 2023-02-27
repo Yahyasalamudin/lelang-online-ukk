@@ -47,7 +47,7 @@
                     <h2 class="text-white-50 mx-auto mt-2 mb-1">Aplikasi web untuk lelang mobil, Mobil bagus dan
                         berkualitas hanya ada di lelang KAMI.</h2>
                     <h2 class="text-white-50 mx-auto mt-2 mb-5"">Selamat datang dan dapatkan mobil yang istimewa.</h2>
-                    <a class="btn btn-info" href="{{ url('register') }}">Bergabung</a>
+                    <a class="btn btn-info" href="{{ url('login') }}">Bergabung</a>
                 </div>
             </div>
         </div>

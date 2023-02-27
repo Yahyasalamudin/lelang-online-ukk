@@ -30,7 +30,8 @@
                             <label>Username</label>
                             <div class="mb-3">
                                 <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                    name="username" placeholder="Username" value="{{ old('username', $user->username) }}">
+                                    name="username" placeholder="Username" value="{{ old('username', $user->username) }}"
+                                    disabled>
 
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\History;
 use App\Models\Lelang;
 use App\Models\User;
@@ -66,30 +67,22 @@ class LelangController extends Controller
      */
     public function store(Request $request)
     {
-        $cek = DB::table('lelang')
-            ->where('lelang.id_barang', $request->id_barang)
-            ->join('barang', 'lelang.id_barang', '=', 'barang.id_barang')
-            ->get();
+        Barang::findOrFail($request->id_barang)->update([
+            'status' => 'dilelang'
+        ]);
 
-        $cek2 = count($cek);
+        Lelang::create([
+            'id_barang' => $request->id_barang,
+            'tgl_lelang' => Carbon::now(),
+            'tgl_akhir' => $request->tgl_akhir,
+            'id_petugas' => auth()->user()->id,
+            'id_pengguna' => $request->id_pengguna,
+            'harga_akhir' => $request->harga_akhir,
+            'read' => 0
+        ]);
 
-        if ($cek2 == 1) {
-            Alert::danger('Gagal', 'Barang ini sudah dilelang');
-            return redirect()->back();
-        } else {
-            Lelang::create([
-                'id_barang' => $request->id_barang,
-                'tgl_lelang' => Carbon::now(),
-                'tgl_akhir' => $request->tgl_akhir,
-                'id_petugas' => auth()->user()->id,
-                'id_pengguna' => $request->id_pengguna,
-                'harga_akhir' => $request->harga_akhir,
-                'read' => 0
-            ]);
-
-            Alert::success('Success', 'Barang berhasil dilelang');
-            return redirect('/lelang');
-        }
+        Alert::success('Success', 'Barang berhasil dilelang');
+        return redirect('/lelang');
     }
 
     /**

@@ -96,14 +96,12 @@ class PetugasController extends Controller
         $request->validate([
             'nama' => 'required',
             'no_hp' => 'required',
-            'username' => 'required|unique:users',
             'password' => 'required',
         ]);
 
         User::find($id)->update([
             'nama' => $request->nama,
             'no_hp' => $request->no_hp,
-            'username' => $request->username,
             'password' => Hash::make($request->password),
             'deskripsi' => $request->password,
             'role' => $request->role

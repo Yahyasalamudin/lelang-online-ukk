@@ -35,6 +35,9 @@
                                             Deskripsi</th>
                                         <th
                                             class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
+                                            Status</th>
+                                        <th
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>
@@ -66,12 +69,19 @@
                                                 <span class="text-xs font-weight-bold">
                                                     Rp.{{ number_format($b->harga_awal) }} </span>
                                             </td>
-                                            </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-xs font-weight-bold">
                                                     {{ $b->deskripsi_barang }} </span>
                                             </td>
-                                            </td>
+                                            @if ($b->status == 'dilelang')
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm bg-gradient-secondary">Dilelang</span>
+                                                </td>
+                                            @else
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm bg-gradient-success">Belum Dilelang</span>
+                                                </td>
+                                            @endif
                                             <td class="align-middle text-center text-sm">
                                                 <a href="{{ route('barang.edit', $b->id_barang) }}"
                                                     class="btn btn-link text-dark px-3 mb-0"><i

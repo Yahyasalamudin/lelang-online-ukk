@@ -68,13 +68,11 @@ class RegisterController extends Controller
         $request->validate([
             'nama' => 'required',
             'no_hp' => 'required',
-            'username' => 'required|unique:users',
         ]);
 
         User::find($id)->update([
             'nama' => $request->nama,
             'no_hp' => $request->no_hp,
-            'username' => $request->username,
         ]);
 
         Alert::success('Success', 'Berhasil mengedit data');

@@ -28,14 +28,8 @@
                             </div>
                             <label>Username</label>
                             <div class="mb-3">
-                                <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                    name="username" placeholder="Username" value="{{ old('username', $user->username) }}">
-
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="text" class="form-control" name="username" placeholder="Username"
+                                    value="{{ old('username', $user->username) }}" disabled>
                             </div>
                             <label>password</label>
                             <div class="mb-3">

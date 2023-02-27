@@ -19,5 +19,6 @@ class Barang extends Model
         'tgl_daftar',
         'harga_awal',
         'deskripsi_barang',
+        'status'
     ];
 }

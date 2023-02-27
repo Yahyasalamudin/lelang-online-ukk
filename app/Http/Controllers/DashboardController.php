@@ -87,7 +87,6 @@ class DashboardController extends Controller
     }
 
     public function update($id) {
-        // dd($id);
         Lelang::find($id)->update([
             'read' => 1
         ]);

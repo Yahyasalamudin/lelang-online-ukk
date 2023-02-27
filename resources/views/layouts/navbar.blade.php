@@ -35,7 +35,7 @@
 
         td {
             width: 100px;
-            overflow-z: auto;
+            overflow: auto;
         }
     </style>
 </head>
@@ -262,7 +262,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <div class="w-auto " id="sidenav-collapse-main">
                 <ul class="navbar-nav">
                     <li class="nav-item mt-3">
                         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
@@ -298,7 +298,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark fw-bold " href="{{ route('logout') }}">
+                        <a class="nav-link text-dark fw-bold" href="{{ route('logout') }}">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
@@ -397,7 +397,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark fw-bold {{ Route::is('pengguna.index') ? 'active' : '' }}"
-                            href="pengguna">
+                            href="/pengguna">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -517,7 +517,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="collapse navbar-collapse w-auto " id="sidenav-collapse-main">
+            <div class="w-auto " id="sidenav-collapse-main">
                 <ul class="navbar-nav">
                     <li class="nav-item mt-3">
                         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
@@ -594,7 +594,7 @@
             </div>
 
             <hr class="horizontal dark mt-0">
-            <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link text-dark fw-bold {{ Route::is('dashboard') ? 'active' : '' }}"
@@ -715,7 +715,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <div class="w-auto" id="sidenav-collapse-main">
                 <ul class="navbar-nav">
                     <li class="nav-item mt-3">
                         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>

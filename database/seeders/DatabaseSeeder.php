@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(25)->create();
 
         User::insert([
-            'nama' => 'admin',
+            'nama' => 'Admin',
             'no_hp' => '081345678901',
             'username' => 'admin',
             'password' => Hash::make('admin'),
@@ -28,7 +28,16 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::insert([
-            'nama' => 'petugas',
+            'nama' => 'Dwi Khusnul',
+            'no_hp' => '081345678901',
+            'username' => 'dwikhusnul',
+            'password' => Hash::make('dwikhusnul'),
+            'role' => 'admin',
+            'deskripsi' => 'dwikhusnul'
+        ]);
+
+        User::insert([
+            'nama' => 'Petugas',
             'no_hp' => '081123456789',
             'username' => 'petugas',
             'password' => Hash::make('petugas'),
@@ -37,37 +46,39 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::insert([
-            'nama' => 'Yahya',
+            'nama' => 'Yahya Salamudin',
             'no_hp' => '081345678901',
             'username' => 'yahya',
-            'password' => Hash::make('pengguna'),
-            'role' => 'pengguna',
-            'deskripsi' => 'pengguna'
+            'password' => Hash::make('yahya'),
+            'role' => 'petugas',
+            'deskripsi' => 'yahya'
         ]);
 
         User::insert([
-            'nama' => 'Dwi Khusnul',
+            'nama' => 'Choirul Huda',
             'no_hp' => '081345678901',
-            'username' => 'dwikhusnul',
-            'password' => Hash::make('dwikhusnul'),
+            'username' => 'choirul',
+            'password' => Hash::make('choirul'),
             'role' => 'pengguna',
-            'deskripsi' => 'dwikhusnul'
+            'deskripsi' => 'choirul'
         ]);
+
         User::insert([
-            'nama' => 'Jokowi',
+            'nama' => 'Titis Ariyati',
             'no_hp' => '081345678901',
-            'username' => 'jokowi',
-            'password' => Hash::make('jokowi'),
+            'username' => 'titis',
+            'password' => Hash::make('titis'),
             'role' => 'pengguna',
-            'deskripsi' => 'jokowi'
+            'deskripsi' => 'titis'
         ]);
+
         User::insert([
-            'nama' => 'Puan',
+            'nama' => 'Salsabila',
             'no_hp' => '081345678901',
-            'username' => 'puan',
-            'password' => Hash::make('puan'),
+            'username' => 'salsa',
+            'password' => Hash::make('salsa'),
             'role' => 'pengguna',
-            'deskripsi' => 'puan'
+            'deskripsi' => 'salsa'
         ]);
     }
 }

@@ -1,5 +1,16 @@
 @extends('layouts.navbar')
 @section('link')
+    <style>
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        td {
+            width: 100px;
+            overflow: auto;
+        }
+    </style>
     <div class="container-fluid py-4">
         <div class="row my-4">
             <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
@@ -73,7 +84,7 @@
                                                 <span class="text-xs font-weight-bold">
                                                     {{ $b->deskripsi_barang }} </span>
                                             </td>
-                                            @if ($b->status == 'dilelang')
+                                            @if ($b->status_barang == 'dilelang')
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="badge badge-sm bg-gradient-secondary">Dilelang</span>
                                                 </td>

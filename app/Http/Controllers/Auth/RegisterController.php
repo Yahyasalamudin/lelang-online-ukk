@@ -29,6 +29,7 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:4',
             'password_konfirmasi' => 'required|same:password|min:4',
+            'g-recaptcha-response' => 'recaptcha',
         ]);
 
         User::create([
@@ -38,11 +39,12 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
             'password_konfirmasi' => $request->password_konfirmasi,
             'role' => 'pengguna',
-            'deskripsi' => $request->password
+            'deskripsi' => $request->password,
+            'g-recaptcha-response' => $request->input('required|captcha')
         ]);
 
         Alert::success('Success', 'Akun berhasil diregistrasi, silakan login!!');
-        return redirect('/');
+        return redirect('/login');
     }
 
     public function editProfile($id) {

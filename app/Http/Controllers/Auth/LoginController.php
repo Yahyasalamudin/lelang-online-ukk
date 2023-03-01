@@ -30,12 +30,13 @@ class LoginController extends Controller
     {
         $request->validate([
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'g-recaptcha-response' => 'recaptcha',
         ]);
 
         $data = [
             'username' => $request->input('username'),
-            'password' => $request->input('password'),
+            'password' => $request->input('password')
         ];
 
         if (Auth::Attempt($data)) {

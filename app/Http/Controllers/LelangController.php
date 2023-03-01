@@ -68,7 +68,7 @@ class LelangController extends Controller
     public function store(Request $request)
     {
         Barang::findOrFail($request->id_barang)->update([
-            'status' => 'dilelang'
+            'status_barang' => 'dilelang'
         ]);
 
         Lelang::create([

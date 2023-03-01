@@ -19,6 +19,7 @@
     <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.4') }}" rel="stylesheet" />
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
 </head>
 
 <body>
@@ -123,6 +124,17 @@
                                             </span>
                                         @enderror
                                     </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 @error('g-recaptcha-response') is-invalid @enderror"
+                                            name="g-recaptcha-response"> {!! htmlFormSnippet() !!}
+                                        </div>
+
+                                        @error('g-recaptcha-response')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign
                                             up</button>
@@ -138,6 +150,7 @@
             </div>
         </section>
     </main>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!--   Core JS Files   -->
     <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>

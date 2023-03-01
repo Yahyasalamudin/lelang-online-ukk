@@ -56,7 +56,7 @@ class BarangController extends Controller
             'tgl_daftar' => Carbon::now(),
             'harga_awal' => $request->harga_awal,
             'deskripsi_barang' => $request->deskripsi_barang,
-            'status' => 'belum',
+            'status_barang' => 'belum',
         ]);
 
         // $save->save();

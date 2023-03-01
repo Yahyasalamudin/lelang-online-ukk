@@ -27,16 +27,6 @@
         .fs {
             font-size: 12px;
         }
-
-        table {
-            width: 100%;
-            table-layout: fixed;
-        }
-
-        td {
-            width: 100px;
-            overflow: auto;
-        }
     </style>
 </head>
 

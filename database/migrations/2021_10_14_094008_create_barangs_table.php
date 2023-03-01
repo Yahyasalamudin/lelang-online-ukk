@@ -20,7 +20,7 @@ class CreateBarangsTable extends Migration
             $table->date('tgl_daftar');
             $table->integer('harga_awal');
             $table->string('deskripsi_barang');
-            $table->enum('status', ['belum', 'dilelang']);
+            $table->enum('status_barang', ['belum', 'dilelang']);
         });
     }
 

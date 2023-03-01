@@ -62,7 +62,7 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-xs font-weight-bold">
-                                                    {{ date('d F Y', strtotime($h->tgl_lelang)) }} </span>
+                                                    {{ date('d F Y, H:i', strtotime($h->created_at)) }} </span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <a href="{{ route('lelang.show', $h->id_lelang) }}"

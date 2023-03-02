@@ -288,7 +288,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark fw-bold" href="{{ route('logout') }}">
+                        <a class="nav-link text-dark fw-bold" href="#"
+                            onclick="logoutConfirm('{{ route('logout') }}')">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
@@ -543,7 +544,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark fw-bold " href="{{ route('logout') }}">
+                        <a class="nav-link text-dark fw-bold" href="#"
+                            onclick="logoutConfirm('{{ route('logout') }}')">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
@@ -742,7 +744,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark fw-bold " href="{{ route('logout') }}">
+                        <a class="nav-link text-dark fw-bold" href="#"
+                            onclick="logoutConfirm('{{ route('logout') }}')">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
@@ -864,6 +867,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        // konfirmasi untuk delete
         $(document).on('click', '.delete-confirm', function(e) {
             e.preventDefault();
             var form = $(this).closest("form");
@@ -883,6 +887,22 @@
                 }
             })
         });
+        // konfirmasi untuk logout
+        function logoutConfirm(url) {
+            Swal.fire({
+                title: 'Apakah Kamu yakin ingin menghapus data ini?',
+                text: "Data yang telah dihapus tidak bisa dikembalikan!",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus'
+            }).then((result) => {
+                if (result.value) {
+                    document.location.href = url;
+                }
+            })
+        }
     </script>
     <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>

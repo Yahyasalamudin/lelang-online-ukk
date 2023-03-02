@@ -30,7 +30,7 @@
                 <div class="container-stm">
                     <div class="row">
                         <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-                            <div class="card card-plain mt-7 bg-light">
+                            <div class="card card-plain mt-6 bg-light">
                                 <div class="card-header pb-0 text-left bg-transparent">
                                     <h3 class="font-weight-bolder text-center text-info text-gradient">Welcome</h3>
                                     <p class="mb-0 text-dark text-center fw-semibold">Enter your username and
@@ -77,7 +77,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group">
                                             <div class="col-md-6 @error('g-recaptcha-response') is-invalid @enderror"
                                                 name="g-recaptcha-response"> {!! htmlFormSnippet() !!}
                                             </div>

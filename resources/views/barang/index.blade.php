@@ -98,8 +98,7 @@
                                                     class="btn btn-link text-dark px-3 mb-0"><i
                                                         class="fas fa-pencil-alt text-dark me-2"
                                                         aria-hidden="true"></i>Edit</a>
-                                                <form action=" {{ route('barang.destroy', $b->id_barang) }} "
-                                                    method="post">
+                                                <form action="{{ route('barang.destroy', $b->id_barang) }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit"

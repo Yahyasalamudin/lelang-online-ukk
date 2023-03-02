@@ -86,6 +86,16 @@
                                                         class="btn btn-link text-dark px-3 mb-0"><i class="fas fa-info"></i>
                                                         Info
                                                     </a>
+                                                    @if (auth()->user()->role == 'petugas')
+                                                        <form action="{{ route('lelang.destroy', $le->id_lelang) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit"
+                                                                class="btn btn-link delete-confirm text-danger text-gradient px-3 mb-0"><i
+                                                                    class="far fa-trash-alt me-2"></i>Hapus</button>
+                                                        </form>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>

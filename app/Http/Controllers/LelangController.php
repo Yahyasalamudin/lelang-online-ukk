@@ -133,4 +133,21 @@ class LelangController extends Controller
 
         return view('lelang.detail', compact('detail', 'history', 'ha', 'u', 'notif', 'notif2'));
     }
+
+    public function destroy($id) {
+        $lelang = Lelang::find($id);
+        $history = History::where('id_lelang', $id)->get();
+
+        if($history->count() > 0){
+            // Jika ada user yang menawar lelang, Pesan error ditampilkan ke halaman sebelumnya
+            Alert::warning('Peringatan', 'Lelang telah ada yang menawar, tidak dapat dhapus!!');
+            return redirect()->back();
+        } else {
+            // Jika tidak ada akan dihapus
+            $lelang->delete();
+
+            Alert::success('Success', 'Lelang berhasil dihapus');
+            return redirect('lelang');
+        }
+    }
 }

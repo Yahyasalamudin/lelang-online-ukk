@@ -31,6 +31,9 @@
                                         <th
                                             class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
                                             Username</th>
+                                        <th
+                                            class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
+                                            Password</th>
                                         @if (auth()->user()->role == 'admin')
                                             <th
                                                 class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">
@@ -57,6 +60,9 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-xs font-weight-bold"> {{ $p->username }} </span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold"> {{ $p->deskripsi }} </span>
                                             </td>
                                             @if (auth()->user()->role == 'admin')
                                                 <td class="align-middle text-center text-sm">

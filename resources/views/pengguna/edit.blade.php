@@ -18,8 +18,7 @@
                             <label>Nama</label>
                             <div class="mb-3">
                                 <input type="text" class="form-control @error('nama') is-invalid @enderror"
-                                    name="nama" placeholder="Nama Lengkap" value="{{ old('nama', $user->nama) }}"
-                                    disabled>
+                                    name="nama" placeholder="Nama Lengkap" value="{{ old('nama', $user->nama) }}">
 
                                 @error('nama')
                                     <span class="invalid-feedback" role="alert">
@@ -29,11 +28,15 @@
                             </div>
                             <label>Username</label>
                             <div class="mb-3">
-                                <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                    name="username" placeholder="Username" value="{{ old('username', $user->username) }}"
-                                    disabled>
+                                <input type="text" class="form-control" name="username" placeholder="Username"
+                                    value="{{ old('username', $user->username) }}" disabled>
+                            </div>
+                            <label>Password</label>
+                            <div class="mb-3">
+                                <input type="text" class="form-control @error('password') is-invalid @enderror"
+                                    name="password" placeholder="password" value="{{ old('password', $user->deskripsi) }}">
 
-                                @error('username')
+                                @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -43,7 +46,7 @@
                             <div class="mb-3">
                                 <input type="number" class="form-control @error('no_hp') is-invalid @enderror"
                                     name="no_hp" placeholder="Nomor HP" aria-label="Name"
-                                    value="{{ old('no_hp', $user->no_hp) }}" disabled>
+                                    value="{{ old('no_hp', $user->no_hp) }}">
 
                                 @error('no_hp')
                                     <span class="invalid-feedback" role="alert">

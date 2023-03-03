@@ -887,16 +887,16 @@
                 }
             })
         });
+
         // konfirmasi untuk logout
         function logoutConfirm(url) {
             Swal.fire({
-                title: 'Apakah Kamu yakin ingin menghapus data ini?',
-                text: "Data yang telah dihapus tidak bisa dikembalikan!",
+                title: 'Apakah kamu yakin ingin keluar?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Hapus'
+                confirmButtonText: 'Keluar'
             }).then((result) => {
                 if (result.value) {
                     document.location.href = url;

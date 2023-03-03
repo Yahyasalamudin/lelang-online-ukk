@@ -73,12 +73,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::insert([
-            'nama' => 'Salsabila',
+            'nama' => 'Sabrina',
             'no_hp' => '081345678901',
-            'username' => 'salsa',
-            'password' => Hash::make('salsa'),
+            'username' => 'sabrina',
+            'password' => Hash::make('sabrina'),
             'role' => 'pengguna',
-            'deskripsi' => 'salsa'
+            'deskripsi' => 'sabrina'
         ]);
     }
 }

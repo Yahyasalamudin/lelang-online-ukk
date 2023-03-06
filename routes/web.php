@@ -20,7 +20,7 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionLogin'])->name('actionLogin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Register Umum
+// Register Masyarakat
 Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/actionregister', [RegisterController::class, 'actionRegister'])->name('register');
 
@@ -38,20 +38,20 @@ Route::middleware(['auth'])->group(function () {
 
     // CRUD Admin
     Route::resource('/admin', AdminController::class);
-    Route::post('/admin/search', [AdminController::class, 'search'])->name('search');
 
     // CRUD Petugas
     Route::resource('/petugas', PetugasController::class);
 
     // CRUD Pengguna
     Route::resource('/pengguna', PenggunaController::class);
+
     // Tampilkan data lelang yang dimenangkan user
     Route::get('/winner/lelang', [PenggunaController::class, 'win'])->name('winner');
 
     // CRUD Barang
     Route::resource('/barang', BarangController::class);
 
-    // Data Lelang
+    // CRUD Lelang
     Route::resource('/lelang', LelangController::class);
 
     // Penawaran
@@ -60,15 +60,14 @@ Route::middleware(['auth'])->group(function () {
     // History
     Route::post('/pemenang/{id_history}', [HistoriController::class, 'status'])->name('pemenang');
 
-    // Pemenang
+    // Pemilihan Pemenang
     Route::get('/winner/detail/{id}', [DashboardController::class, 'show'])->name('winner-detail');
     Route::put('/winner/update/{id}', [DashboardController::class, 'update'])->name('winner-update');
-
 
     // History Lelang
     Route::get('/history/lelang', [DashboardController::class, 'historyLelang'])->name('history');
 
-    // Single report
+    // Report Lelang sesuai ID
     Route::get('/report/{id_lelang}', [ReportController::class, 'report'])->name('report');
 
     // All Report

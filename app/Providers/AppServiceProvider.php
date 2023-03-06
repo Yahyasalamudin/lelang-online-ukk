@@ -34,19 +34,19 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             if (Auth::check() && $view->getName() !== 'login') {
                 // Mengirim Notifikasi Pemenang
-            $user = auth()->user();
-            $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-                ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-                ->where('lelang.id_pengguna', '=', $user->id)
-                ->where('read', '=', 0)
-                ->select('*')
-                ->count();
-            $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-                ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-                ->where('lelang.id_pengguna', '=', $user->id)
-                ->where('read', '=', 0)
-                ->select('*')
-                ->get();
+                $user = auth()->user();
+                $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+                    ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+                    ->where('lelang.id_pengguna', '=', $user->id)
+                    ->where('read', '=', 0)
+                    ->select('*')
+                    ->count();
+                $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
+                    ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
+                    ->where('lelang.id_pengguna', '=', $user->id)
+                    ->where('read', '=', 0)
+                    ->select('*')
+                    ->get();
 
                 // Mengupdate data Pemenang Lelang
                 $lelangs = Lelang::all();
@@ -65,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
                         ->where('history.id_lelang', '=', $i->id_lelang)
                         ->orderBy('history.penawaran_harga', 'DESC')
                         ->get();
-                        // dd($h2);
+                    // dd($h2);
                 }
 
                 $view->with(compact('notif', 'notif2', 'h1', 'h2'));

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class ReportController extends Controller
 {
     public function index() {
-        return view('cetak-laporan');
+        return view('report/cetak-laporan');
     }
 
     public function cetaklelang() {
@@ -33,7 +33,7 @@ class ReportController extends Controller
             ->orderByDesc('history.penawaran_harga')
             ->get();
 
-        $pdf = Pdf::loadView('report', compact('historyd', 'detaild'));
+        $pdf = Pdf::loadView('report/report', compact('historyd', 'detaild'));
         return $pdf->stream();
     }
 
@@ -41,7 +41,7 @@ class ReportController extends Controller
         $user = User::all()->where('role', 'admin')->whereNotIn('username', ['admin']);
         $title = "Admin";
 
-        $pdf = Pdf::loadView('report-user', compact('user', 'title'));
+        $pdf = Pdf::loadView('report/report-user', compact('user', 'title'));
         return $pdf->stream();
     }
 
@@ -49,14 +49,14 @@ class ReportController extends Controller
         $user = User::all()->where('role', 'petugas');
         $title = "Petugas";
 
-        $pdf = Pdf::loadView('report-user', compact('user', 'title'));
+        $pdf = Pdf::loadView('report/report-user', compact('user', 'title'));
         return $pdf->stream();
     }
 
     public function cetakpengguna() {
         $user = User::all()->where('role', 'pengguna');
 
-        $pdf = Pdf::loadView('report-pengguna', compact('user'));
+        $pdf = Pdf::loadView('report/report-pengguna', compact('user'));
         return $pdf->stream();
     }
 
@@ -76,7 +76,7 @@ class ReportController extends Controller
             ->join('users', 'lelang.id_pengguna', 'users.id')
             ->get();
 
-        $pdf = Pdf::loadView('report-lelang', compact('dataAdmin', 'dataPetugas', 'tgl_awal', 'tgl_akhir'));
+        $pdf = Pdf::loadView('report/report-lelang', compact('dataAdmin', 'dataPetugas', 'tgl_awal', 'tgl_akhir'));
         return $pdf->stream();
     }
 
@@ -88,7 +88,7 @@ class ReportController extends Controller
             ->select('*')
             ->first();
 
-        $pdf = Pdf::loadView('report-win', compact('detail'));
+        $pdf = Pdf::loadView('report/report-win', compact('detail'));
         return $pdf->stream();
     }
 }

@@ -63,7 +63,7 @@ class RegisterController extends Controller
             ->select('*')
             ->get();
 
-        return view('edit-profile', compact('user', 'notif', 'notif2'));
+        return view('profile/edit-profile', compact('user', 'notif', 'notif2'));
     }
 
     public function updateProfile(Request $request, $id) {
@@ -97,7 +97,7 @@ class RegisterController extends Controller
             ->select('*')
             ->get();
 
-        return view('edit-password', compact('user', 'notif', 'notif2'));
+        return view('profile/edit-password', compact('user', 'notif', 'notif2'));
     }
 
     public function updatePassword(Request $request, $id) {

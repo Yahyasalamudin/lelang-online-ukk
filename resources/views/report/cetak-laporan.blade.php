@@ -23,7 +23,8 @@
                                 Petugas</a>
                         </div>
                         <div class="input-group mb-3 mx-auto w-50 row justify-content-center">
-                            <a href="{{ route('cetak-pengguna') }}" class="btn btn-info" target="_blank">Cetak data User</a>
+                            <a href="{{ route('cetak-pengguna') }}" class="btn btn-info" target="_blank">Cetak data
+                                Masyarakat</a>
                         </div>
                         <div class="input-group mb-3 mx-auto w-50 row justify-content-center">
                             <a href="{{ route('cetak-lelang') }}" class="btn btn-info">Cetak data lelang</a>

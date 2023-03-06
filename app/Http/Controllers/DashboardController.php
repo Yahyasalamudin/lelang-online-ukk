@@ -19,21 +19,7 @@ class DashboardController extends Controller
         $lelang = DB::table('lelang')->count();
         $lelang1 = Lelang::all();
 
-        $user = auth()->user();
-        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->count();
-        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->get();
-
-        return view('dashboard', compact('count1', 'count2', 'count3', 'lelang', 'lelang1', 'notif', 'notif2'));
+        return view('dashboard', compact('count1', 'count2', 'count3', 'lelang', 'lelang1'));
     }
 
     public function historyLelang() {
@@ -44,21 +30,7 @@ class DashboardController extends Controller
                 ->get();
         $lelangs = Lelang::all();
 
-        $user = auth()->user();
-        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->count();
-        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->get();
-
-        return view('pengguna.history', compact('history', 'lelangs', 'notif', 'notif2'));
+        return view('pengguna.history', compact('history', 'lelangs'));
     }
 
     public function show($id) {
@@ -69,21 +41,7 @@ class DashboardController extends Controller
             ->select('*')
             ->first();
 
-        $user = auth()->user();
-        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->count();
-        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->get();
-
-        return view('pengguna.winner-detail', compact('detail', 'notif', 'notif2'));
+        return view('pengguna.winner-detail', compact('detail'));
     }
 
     public function update($id) {

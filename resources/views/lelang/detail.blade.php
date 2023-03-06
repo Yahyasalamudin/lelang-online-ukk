@@ -219,8 +219,8 @@
         var tgl_akhir = new Date(akhir);
         var timeEnd = tgl_akhir.getTime();
 
-        // console.log(timeNow);
-        // console.log(timeEnd);
+        console.log(timeNow);
+        console.log(timeEnd);
 
         if (timeNow > timeEnd) {
             var button = document.getElementById("pilih");

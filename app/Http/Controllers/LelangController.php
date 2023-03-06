@@ -22,21 +22,7 @@ class LelangController extends Controller
     {
         $lelangs = Lelang::all();
 
-        $user = auth()->user();
-        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->count();
-        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->get();
-
-        return view('lelang.index', compact('lelangs', 'notif', 'notif2'));
+        return view('lelang.index', compact('lelangs'));
     }
 
     /**
@@ -99,39 +85,13 @@ class LelangController extends Controller
             ->select('*')
             ->first();
 
-        $id1 = $detail->id_barang;
-
         $history = DB::table('history')->leftJoin('users', 'history.id_pengguna', 'users.id')
             ->select('users.*', 'history.*')
             ->where('history.id_lelang', '=', $id)
             ->orderBy('history.penawaran_harga', 'DESC')
             ->get();
 
-        $max = History::max('penawaran_harga');
-        $ha = DB::table('history')->leftJoin('users', 'history.id_pengguna', 'users.id')
-            ->select('users.*', 'history.*')
-            ->where('history.id_lelang', '=', $id)
-            ->where('penawaran_harga', $max)
-            ->orderBy('history.penawaran_harga', 'DESC')
-            ->get();
-
-        $u  =  DB::table('users')->first();
-
-        $user = auth()->user();
-        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->count();
-        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->get();
-
-        return view('lelang.detail', compact('detail', 'history', 'ha', 'u', 'notif', 'notif2'));
+        return view('lelang.detail', compact('detail', 'history'));
     }
 
     public function destroy($id) {

@@ -63,13 +63,20 @@ class ReportController extends Controller
     public function reportTgl(Request $request) {
         $tgl_awal = $request->tgl_awal;
         $tgl_akhir = $request->tgl_akhir;
+        $petugas = auth()->user()->id;
 
-        $data = Lelang::whereBetween('tgl_lelang', [$tgl_awal, $tgl_akhir])->where('status', 'ditutup')
+        $dataAdmin = Lelang::whereBetween('tgl_lelang', [$tgl_awal, $tgl_akhir])->where('status', 'ditutup')
             ->join('barang', 'lelang.id_barang', 'barang.id_barang')
             ->join('users', 'lelang.id_pengguna', 'users.id')
             ->get();
 
-        $pdf = Pdf::loadView('report-lelang', compact('data', 'tgl_awal', 'tgl_akhir'));
+        $dataPetugas = Lelang::whereBetween('tgl_lelang', [$tgl_awal, $tgl_akhir])->where('status', 'ditutup')
+            ->where('id_petugas', '=', $petugas )
+            ->join('barang', 'lelang.id_barang', 'barang.id_barang')
+            ->join('users', 'lelang.id_pengguna', 'users.id')
+            ->get();
+
+        $pdf = Pdf::loadView('report-lelang', compact('dataAdmin', 'dataPetugas', 'tgl_awal', 'tgl_akhir'));
         return $pdf->stream();
     }
 

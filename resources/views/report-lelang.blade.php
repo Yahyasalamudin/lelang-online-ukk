@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Transaksi</title>
+    <title>Report Lelang</title>
     <style>
         .title {
             text-align: center;
@@ -85,17 +85,31 @@
             <th>Tanggal Lelang</th>
         </tr>
         <?php $no = 1; ?>
-        @foreach ($data as $d)
-            <tr>
-                <td>{{ $no++ }}</td>
-                <td> {{ $d->nama }} </td>
-                <td> {{ $d->no_hp }} </td>
-                <td> {{ $d->nama_barang }} </td>
-                <td> Rp.{{ number_format($d->harga_awal) }} </td>
-                <td> Rp.{{ number_format($d->harga_akhir) }} </td>
-                <td> {{ date('d, F Y', strtotime($d->tgl_lelang)) }} </td>
-            </tr>
-        @endforeach
+        @if (auth()->user()->role == 'admin')
+            @foreach ($dataAdmin as $d)
+                <tr>
+                    <td>{{ $no++ }}</td>
+                    <td> {{ $d->nama }} </td>
+                    <td> {{ $d->no_hp }} </td>
+                    <td> {{ $d->nama_barang }} </td>
+                    <td> Rp.{{ number_format($d->harga_awal) }} </td>
+                    <td> Rp.{{ number_format($d->harga_akhir) }} </td>
+                    <td> {{ date('d, F Y', strtotime($d->tgl_lelang)) }} </td>
+                </tr>
+            @endforeach
+        @else
+            @foreach ($dataPetugas as $d)
+                <tr>
+                    <td>{{ $no++ }}</td>
+                    <td> {{ $d->nama }} </td>
+                    <td> {{ $d->no_hp }} </td>
+                    <td> {{ $d->nama_barang }} </td>
+                    <td> Rp.{{ number_format($d->harga_awal) }} </td>
+                    <td> Rp.{{ number_format($d->harga_akhir) }} </td>
+                    <td> {{ date('d, F Y', strtotime($d->tgl_lelang)) }} </td>
+                </tr>
+            @endforeach
+        @endif
     </table>
 
 </body>

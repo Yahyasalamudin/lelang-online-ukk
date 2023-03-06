@@ -129,7 +129,7 @@ class PetugasController extends Controller
             $user->delete();
 
             Alert::success('Success', 'User telah berhasil dihapus!');
-            return redirect('pengguna');
+            return redirect('petugas');
         }
     }
 }

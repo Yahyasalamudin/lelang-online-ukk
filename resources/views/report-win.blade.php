@@ -95,7 +95,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Struk Pembayaran SPP</title>
+    <title>Bukti Pemenang</title>
 
     <style>
         #table {
@@ -178,7 +178,7 @@
             <td width="80">Harga Awal :</td>
             <td width="240">Rp.{{ number_format($detail->harga_awal) }}</td>
             <td width="80">Harga Akhir :</td>
-            <td>{{ date('d, F Y', strtotime($detail->tgl_akhir)) }}</td>
+            <td>Rp.{{ number_format($detail->harga_akhir) }}</td>
         </tr>
     </table>
     <br>

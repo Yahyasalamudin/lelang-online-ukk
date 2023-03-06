@@ -79,20 +79,6 @@ class HistoriController extends Controller
             ->orderBy('history.penawaran_harga', 'DESC')
             ->get();
 
-        $user = auth()->user();
-        $notif = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->count();
-        $notif2 = DB::table('lelang')->leftJoin('barang', 'lelang.id_barang', 'barang.id_barang')
-            ->leftJoin('users', 'lelang.id_pengguna', 'users.id')
-            ->where('lelang.id_pengguna', '=', $user->id)
-            ->where('read', '=', 0)
-            ->select('*')
-            ->get();
-
-        return view('lelang.detail', compact('detail', 'history', 'notif', 'notif2'));
+        return redirect()->back()->with(compact('detail', 'history'));
     }
 }

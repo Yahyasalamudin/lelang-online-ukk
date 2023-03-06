@@ -863,6 +863,40 @@
         </div>
     </footer>
 
+    @if ($h1->status == 'dibuka')
+        @foreach ($h2 as $ud)
+            <form action="{{ Route('pemenang', $ud->id_history) }}" method="post">
+                @csrf
+                <button type="submit" id="pilih"
+                    style="border-left-width: 0px;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;"></button>
+            </form>
+        @endforeach
+    @endif
+
+    <input type="hidden" id="tgl_akhir" value="{{ $h1->tgl_akhir }}">
+
+    <script>
+        var now = new Date();
+        var timeNow = now.getTime();
+
+        var akhir = document.getElementById('tgl_akhir').value
+        var tgl_akhir = new Date(akhir);
+        var timeEnd = tgl_akhir.getTime();
+
+        // console.log(timeNow);
+        // console.log(timeEnd);
+
+        if (timeNow > timeEnd) {
+            var button = document.getElementById("pilih");
+            // button.preventDefault();
+            button.click();
+            // alert('test');
+        }
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>

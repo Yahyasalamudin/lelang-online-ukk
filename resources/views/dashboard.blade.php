@@ -21,9 +21,12 @@
                                     </div>
                                 </div>
                                 <div class="col-4 text-end">
-                                    <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                        <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                                    </div>
+                                    <a href="/admin">
+                                        <div
+                                            class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -42,9 +45,12 @@
                                     </div>
                                 </div>
                                 <div class="col-4 text-end">
-                                    <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                        <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                                    </div>
+                                    <a href="/petugas">
+                                        <div
+                                            class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -63,9 +69,12 @@
                                     </div>
                                 </div>
                                 <div class="col-4 text-end">
-                                    <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                        <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                                    </div>
+                                    <a href="/pengguna">
+                                        <div
+                                            class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -84,9 +93,12 @@
                                     </div>
                                 </div>
                                 <div class="col-4 text-end">
-                                    <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                        <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                                    </div>
+                                    <a href="/lelang">
+                                        <div
+                                            class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                            <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>

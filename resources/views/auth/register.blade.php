@@ -43,9 +43,9 @@
         </div>
     </nav>
     <!-- End Navbar -->
-    <main class="main-content  mt-0">
+    <main class="main-content mt-0">
         <section class="min-vh-100 mb-8">
-            <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
+            <div class="page-header align-items-start min-vh-50 pt-5 pb-10 m-3 border-radius-lg"
                 style="background-image: url('../assets/img/curved-images/curved14.jpg');">
                 <span class="mask bg-gradient-dark opacity-6"></span>
                 <div class="container-stm">
@@ -58,7 +58,7 @@
                     <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                         <div class="card z-index-0">
                             <div class="row px-xl-5 px-sm-4 px-3">
-                                <div class="mt-2 position-relative text-center">
+                                <div class="mt-3 position-relative text-center">
                                     <p
                                         class="text-sm font-weight-bold mb-2 text-dark text-border d-inline z-index-2 bg-white px-3">
                                         Register
@@ -136,12 +136,15 @@
                                         @enderror
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign
-                                            up</button>
+                                        <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">
+                                            Sign up
+                                        </button>
+                                        <p class="text-sm mt-3 mb-0">Already have an account?
+                                            <a href="{{ route('login') }}" class="text-dark font-weight-bolder">
+                                                Login
+                                            </a>
+                                        </p>
                                     </div>
-                                    <p class="text-sm mt-3 mb-0">Already have an account? <a
-                                            href="{{ route('login') }}" class="text-dark font-weight-bolder">Sign
-                                            in</a></p>
                                 </form>
                             </div>
                         </div>

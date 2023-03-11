@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -26,11 +27,15 @@ class RegisterController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'no_hp' => 'required|numeric|digits_between:10,13',
-            'username' => 'required|string|max:255|unique:users',
+            'username' => 'required|string|max:255|regex:/^[A-Za-z0-9_]+$/|unique:users',
             'password' => 'required|string|min:4',
             'password_konfirmasi' => 'required|same:password|min:4',
             'g-recaptcha-response' => 'recaptcha',
-        ]);
+            ],
+            [
+                'regex' => 'Username tidak boleh mengandung spasi.'
+            ]
+        );
 
         User::create([
             'nama' => $request->nama,

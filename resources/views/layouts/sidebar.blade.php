@@ -1,6 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -77,7 +76,7 @@
             <div class="nalika-profile">
                 <div class="profile-dtl">
                     <a href="#"><img src="{{ asset('assets/img/notification/uang.png') }}" alt="" /></a>
-                    <h2> APLIKASI LELANG </h2>
+                    <h2> APLIKASI LELANG ONLINE</h2>
                 </div>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">

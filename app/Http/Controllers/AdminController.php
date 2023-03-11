@@ -43,11 +43,15 @@ class AdminController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
+            'username' => 'required|string|max:255|regex:/^[A-Za-z0-9_]+$/|unique:users',
             'no_hp' => 'required|numeric|digits_between:10,13',
             'password' => 'required|string|min:4',
             'password_konfirmasi' => 'required|same:password|min:4'
-        ]);
+            ],
+            [
+                'regex' => 'Username tidak boleh mengandung spasi.'
+            ]
+        );
 
         User::create([
             'nama' => $request->nama,

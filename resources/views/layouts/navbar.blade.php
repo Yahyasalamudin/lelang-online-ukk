@@ -564,7 +564,7 @@
                                                             <div class="d-flex flex-column justify-content-center">
                                                                 <h6 class="text-sm font-weight-normal mb-1">
                                                                     <span class="font-weight-bold"><b>Selamat, Kamu
-                                                                            memenagkan</b>
+                                                                            memenangkan</b>
                                                                         {{ $l2->nama_barang }}</span>
                                                                 </h6>
                                                                 <p class="text-xs text-dark mb-0 ">

@@ -97,6 +97,8 @@ class LelangController extends Controller
     public function destroy($id) {
         $lelang = Lelang::find($id);
         $history = History::where('id_lelang', $id)->get();
+        $barang = Barang::find($lelang->id_barang);
+        // dd($barang->nama_barang);
 
         if($history->count() > 0){
             // Jika ada user yang menawar lelang, Pesan error ditampilkan ke halaman sebelumnya
@@ -105,6 +107,11 @@ class LelangController extends Controller
         } else {
             // Jika tidak ada akan dihapus
             $lelang->delete();
+
+            // Update status barang menjadi belum dilelang
+            $barang->update([
+                'status_barang' => 'belum'
+            ]);
 
             Alert::success('Success', 'Lelang berhasil dihapus');
             return redirect('lelang');

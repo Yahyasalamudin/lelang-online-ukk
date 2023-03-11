@@ -18,7 +18,8 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barangs = Barang::get();
+        $barangs = Barang::orderByDESC('id_barang')->get();
+        // dd($barangs);
         return view('barang.index', compact('barangs'));
     }
 
@@ -66,17 +67,6 @@ class BarangController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -89,7 +79,6 @@ class BarangController extends Controller
 
         if($lelang->count() > 0){
             // Jika ada lelang yang menggunakan barang, Pesan error ditampilkan ke halaman sebelumnya
-
             Alert::warning('Peringatan', 'Produk telah di lelang, tidak dapat diedit!!');
             return redirect()->back();
         } else {

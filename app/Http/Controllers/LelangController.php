@@ -20,7 +20,7 @@ class LelangController extends Controller
      */
     public function index()
     {
-        $lelangs = Lelang::all();
+        $lelangs = Lelang::orderByDESC('id_lelang')->get();
 
         return view('lelang.index', compact('lelangs'));
     }
